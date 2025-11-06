@@ -5,6 +5,11 @@
              x:DataType="viewmodels:DashboardViewModel"
              x:Class="InventoryApp.Gui.MainPage"
   >
-
+    <Grid RowDefinitions="Auto, *">
+        <Button Text="Load"/>
+        <CollectionView Grid.Row="1">
+            
+        </CollectionView>
+    </Grid>
     
 </ContentPage>
