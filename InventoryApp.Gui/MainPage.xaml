@@ -3,11 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:InventoryApp.Coree.Models;assembly=InventoryApp.Coree"
              x:DataType="viewmodels:DashboardViewModel"
+             xmlns:models="clr-namespace:InventoryApp.Coree.Models;assembly=InventoryApp.Coree"
              x:Class="InventoryApp.Gui.MainPage"
   >
     <Grid RowDefinitions="Auto, *">
-        <Button Text="Load"/>
-        <CollectionView Grid.Row="1">
+        <Button Text="Load" Command="{Binding LoadCommand}"/>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:InventoryItem">
+                    <Grid ColumnDefinitions="*,*">
+                        <Label Text="{Binding InventoryNumber}"/>
+                        <Label Text="{Binding Title}" Grid.Column="1"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
             
         </CollectionView>
     </Grid>
