@@ -6,7 +6,7 @@
              xmlns:models="clr-namespace:InventoryApp.Coree.Models;assembly=InventoryApp.Coree"
              x:Class="InventoryApp.Gui.MainPage"
   >
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, *" Margin="15" RowSpacing="10" >
         <Button Text="Load" Command="{Binding LoadCommand}"/>
         <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
