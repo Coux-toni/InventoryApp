@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryApp.Library.Services
+namespace InventoryApp.Coree.Services
 {
-    public interface IService
+    public interface IRepository
     {
         List<InventoryItem> Load();
-        
-            
-        
     }
 }

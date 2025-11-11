@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryApp.Library.Services
+namespace InventoryApp.Coree.Services
 {
-    public class RestService : IService
+    public class RestService : IRepository
     {
         public List<InventoryItem> Load()
         {

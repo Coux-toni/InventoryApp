@@ -1,5 +1,5 @@
 ﻿using InventoryApp.Coree.Models;
-using InventoryApp.Library.Services;
+using InventoryApp.Coree.Services;
 using Microsoft.Extensions.Logging;
 
 namespace InventoryApp.Gui
@@ -19,7 +19,7 @@ namespace InventoryApp.Gui
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<DashboardViewModel>();
-            builder.Services.AddSingleton<IService>(new RestService());
+            builder.Services.AddSingleton<IRepository>(new RestService());
 
 #if DEBUG
     		builder.Logging.AddDebug();
