@@ -1,5 +1,7 @@
-﻿using InventoryApp.Coree.Models;
+﻿using Android.Preferences;
+using InventoryApp.Coree.Models;
 using InventoryApp.Coree.Services;
+using InventoryApp.Gui.Services;
 using Microsoft.Extensions.Logging;
 
 namespace InventoryApp.Gui
@@ -23,6 +25,7 @@ namespace InventoryApp.Gui
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<DashboardViewModel>();
             builder.Services.AddSingleton<IRepository>(new RestService(token, apiBase));
+            builder.Services.AddSingleton<IPreferencesService>(new PreferenceService());
 
 #if DEBUG
     		builder.Logging.AddDebug();
