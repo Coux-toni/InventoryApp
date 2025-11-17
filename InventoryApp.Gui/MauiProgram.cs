@@ -16,10 +16,13 @@ namespace InventoryApp.Gui
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            // 2|OMXtseZFGDZZxI9vAOmQ1OGo354LBCaLpdGwHabO32a06153
+            string token = Preferences.Get("ApiToken",string.Empty);
+            string apiBase = "https://inventory.test/api";
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<DashboardViewModel>();
-            builder.Services.AddSingleton<IRepository>(new RestService());
+            builder.Services.AddSingleton<IRepository>(new RestService(token, apiBase));
 
 #if DEBUG
     		builder.Logging.AddDebug();

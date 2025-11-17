@@ -10,16 +10,18 @@ using System.Threading.Tasks;
 
 namespace InventoryApp.Coree.Models
 {
-    public partial class DashboardViewModel :ObservableObject
+    public partial class DashboardViewModel : ObservableObject
     {
         [ObservableProperty]
         private ObservableCollection<InventoryItem> _items = new();
 
         private IRepository _repository;
+        private IPreferencesService _preferences;
 
-        public DashboardViewModel(IRepository service)
+        public DashboardViewModel(IRepository service, IPreferencesService preferences)
         {
             this._repository = service;
+            this._preferences = preferences;
         }
 
         [RelayCommand]
@@ -33,6 +35,14 @@ namespace InventoryApp.Coree.Models
             {
                 this.Items.Add(item);
             }
+        }
+        [ObservableProperty]
+        private string _token = string.Empty;
+
+        [RelayCommand]
+        void SetToken()
+        {
+            _preferences.Set("ApiToken", this.Token);   
         }
     }
 }
