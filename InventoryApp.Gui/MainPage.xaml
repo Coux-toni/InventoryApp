@@ -6,12 +6,13 @@
              xmlns:models="clr-namespace:InventoryApp.Coree.Models;assembly=InventoryApp.Coree"
              x:Class="InventoryApp.Gui.MainPage"
   >
-    <Grid RowDefinitions="Auto, *" Margin="15" RowSpacing="10" >
+    <Grid RowDefinitions="Auto, Auto, *" Margin="15" RowSpacing="10" >
 
         <StackLayout>
             <Label Text="API-Token" FontAttributes="Bold"/>
             <Entry Text="{Binding Token}"/>
             <Button Text="Set Token" Command="{Binding SetTokenCommand}"/>
+            <Button Text="Load Token" Command="{Binding LoadTokenCommand}"/>
         </StackLayout>
         <Button Grid.Row="1" Text="Load" Command="{Binding LoadCommand}"/>
         <CollectionView Grid.Row="2" ItemsSource="{Binding Items}">

@@ -44,5 +44,11 @@ namespace InventoryApp.Coree.Models
         {
             _preferences.Set("ApiToken", this.Token);   
         }
+
+        [RelayCommand]
+        void LoadToken()
+        {
+            this.Token = _preferences.Get("ApiToken", "");
+        }
     }
 }

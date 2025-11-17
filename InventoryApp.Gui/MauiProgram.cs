@@ -1,5 +1,4 @@
-﻿using Android.Preferences;
-using InventoryApp.Coree.Models;
+﻿using InventoryApp.Coree.Models;
 using InventoryApp.Coree.Services;
 using InventoryApp.Gui.Services;
 using Microsoft.Extensions.Logging;
@@ -20,7 +19,7 @@ namespace InventoryApp.Gui
                 });
             // 2|OMXtseZFGDZZxI9vAOmQ1OGo354LBCaLpdGwHabO32a06153
             string token = Preferences.Get("ApiToken",string.Empty);
-            string apiBase = "https://inventory.test/api";
+            string apiBase = "http://inventory.test/api";
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<DashboardViewModel>();
