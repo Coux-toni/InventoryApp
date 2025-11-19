@@ -42,12 +42,14 @@ namespace InventoryApp.Coree.Models
         [RelayCommand]
         void SetToken()
         {
-            _preferences.Set("ApiToken", this.Token);   
+            _preferences.Set("ApiToken", this.Token);
+            ((IRestEndPoint)_repository).SetEndPoint("https://inventory.test/api", this.Token);
         }
 
         [RelayCommand]
         void LoadToken()
         {
+            
             this.Token = _preferences.Get("ApiToken", "");
         }
     }

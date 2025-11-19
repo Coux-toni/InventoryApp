@@ -4,31 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InventoryApp.Coree.Services
 {
-    public class RestService : IRepository
+    public class RestService : IRepository, IRestEndPoint
     {
         private RestClient _client;
         public RestService(string token, string apiBase)
         {
-            var options = new RestClientOptions(apiBase)
-            {
-                ThrowOnAnyError = true,
-                Timeout = new TimeSpan(0,2,0)
-            };
-
-            
-            this._client = new RestClient(options);
-            this._client.AddDefaultHeaders(new Dictionary<string, string>()
-            {
-                {KnownHeaders.ContentType, "application/json" },
-                {KnownHeaders.Accept, "application/json" },
-                {KnownHeaders.Authorization, $"Bearer {token}" },
-
-            });
+            this.SetEndPoint(apiBase, token);
         }
 
         public List<InventoryItem> Load()
@@ -63,6 +50,25 @@ namespace InventoryApp.Coree.Services
                 new InventoryItem("INV343", "Probe")
             };
             */
+        }
+
+        public void SetEndPoint(string api, string token)
+        {
+            var options = new RestClientOptions(api)
+            {
+                ThrowOnAnyError = true,
+                Timeout = new TimeSpan(0, 2, 0)
+            };
+
+
+            this._client = new RestClient(options);
+            this._client.AddDefaultHeaders(new Dictionary<string, string>()
+            {
+                {KnownHeaders.ContentType, "application/json" },
+                {KnownHeaders.Accept, "application/json" },
+                {KnownHeaders.Authorization, $"Bearer {token}" },
+
+            });
         }
     }
 }
