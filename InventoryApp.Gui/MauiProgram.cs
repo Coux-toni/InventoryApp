@@ -19,7 +19,7 @@ namespace InventoryApp.Gui
                 });
             // 2|OMXtseZFGDZZxI9vAOmQ1OGo354LBCaLpdGwHabO32a06153
             string token = Preferences.Get("ApiToken",string.Empty);
-            string apiBase = "http://inventory.test/api";
+            string apiBase = "https://inventory.test/api";
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<DashboardViewModel>();
